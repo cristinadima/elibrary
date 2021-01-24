@@ -45,7 +45,7 @@
             </ul>
             <ul class="nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="./user.html">
+                    <a class="nav-link" href="#">
                         <i class="nc-icon nc-circle-09"></i>
                         <p>Books</p>
                     </a>
@@ -88,9 +88,8 @@
                 </li>
             </ul>
         </div>
-        <div class="sidebar-background" style="background-image: url(../static/img/sidebar-5.jpg) "></div></div>
+       </div>
     <div class="main-panel">
-        <!-- End Navbar -->
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -99,8 +98,8 @@
                             <div style="display: flex; align-items: center;">
                                 <h4 class="card-title">Books</h4>
                                 <div class="button-container" style="margin-left: auto;">
-                                    <a href="http://www.creative-tim.com/product/light-bootstrap-dashboard-pro"
-                                       target="_blank" class="btn btn-warning btn-block btn-fill">Add book</a>
+                                    <a href="./addBook" th:href="@{addBook}"
+                                       class="btn btn-warning btn-block btn-fill">Add book</a>
                                 </div>
                             </div>
                         </div>
@@ -128,33 +127,17 @@
                                         <td><span th:text="${book.categoryName}">  </span></td>
                                         <td><span th:text="${book.publisher}">  </span></td>
                                         <td class="td-actions">
-                                            <button type="button" rel="tooltip" title="" class="btn btn-info btn-simple btn-link" data-original-title="Edit Task"
-                                                    style = "padding-left: 0;">
+                                            <a type="button" rel="tooltip" title="" class="btn btn-info btn-simple btn-link" data-original-title="Edit Task"
+                                                    style = "padding-left: 0;" th:href="@{editBook/}+${book.idBook}" >
                                                 <i class="fa fa-edit"></i>
-                                            </button>
+                                            </a>
                                             <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-link" data-original-title="Remove">
                                                 <i class="fa fa-times"></i>
                                             </button>
                                         </td>
 
                                     </tr>
-                                   <!-- <tr>
-                                        <td>1</td>
-                                        <td>Arta subtila a nepasarii</td>
-                                        <td>Unknown</td>
-                                        <td>Drama</td>
-                                        <td>Astral</td>
-                                        <td class="td-actions">
-                                            <button type="button" rel="tooltip" title="" class="btn btn-info btn-simple btn-link" data-original-title="Edit Task"
-                                            style = "padding-left: 0;">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-link" data-original-title="Remove">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </td>
 
-                                    </tr>-->
                                     </tbody>
                                 </table>
                             </div>

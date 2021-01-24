@@ -1,9 +1,6 @@
 package ro.delivery.products.dto;
 
-import ro.delivery.products.entity.Author;
-import ro.delivery.products.entity.Book;
-import ro.delivery.products.entity.Category;
-import ro.delivery.products.repository.BookGateway;
+import ro.delivery.products.rowdatagateway.BookGateway;
 
 import java.util.ArrayList;
 import java.util.List;

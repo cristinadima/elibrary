@@ -39,10 +39,10 @@ public class CategoryController {
  * admin[adminid, username, password]
  *
  * ----
- * ghost -carte[idcarte, nume, autor] preluam initial carte[idcarte] apoi pe parcurs facem get daca ne trebuie
- * celelalte campuri
- * [comportamentale ob relationale]
- * - in tabelul de carti afisam fara editura, cand se editeaza cartea, preluam si editura daca nu o avem deja in sesiune
+ * id map
+ * cautam cartea pt edit in map, daca nu exista o luam din bd
+ * comportamental ob relational
+ * OK
  * ===
  * arhitectural de baza
  * gateway - clasa api pt comunicat cu serv extern: maps

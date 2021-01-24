@@ -7,13 +7,12 @@ import org.springframework.stereotype.Component;
 import ro.delivery.products.entity.Author;
 import ro.delivery.products.entity.Category;
 import ro.delivery.products.repository.AuthorRepository;
-import ro.delivery.products.repository.BookGateway;
 import ro.delivery.products.repository.CategoryRepository;
+import ro.delivery.products.rowdatagateway.BookGateway;
 /*import ro.delivery.products.repository.OrderRepository;
 import ro.delivery.products.repository.OrderedProductRepository;*/
 
 import javax.annotation.PostConstruct;
-import java.math.BigDecimal;
 
 @Component
 @RequiredArgsConstructor
@@ -33,13 +32,13 @@ public class InitData {
             categoryRepository.save(new Category().setName("Police").setDescription("Escape"));
         }
         if (authorRepository.count() == 0){
-            authorRepository.save(new Author().setIdAuthor(-1).setName("Cineva").setNationality("ceva"));
+            authorRepository.save(new Author().setIdAuthor(1).setName("Cineva").setNationality("ceva"));
         }
        /* BookGateway b = new BookGateway()
-                .setAuthor(new Author().setIdAuthor(-1)).setCategory(new Category().setIdCat(0))
+                .setAuthor(new Author().setIdAuthor(1).setName("Cineva")).setCategory(new Category().setIdCat(2).setName("Poetry"))
                 .setPublisher("an").setTitle("titlu");
-        b.insertBook();
-*/
+        b.insertBook();*/
+
     }
 
 }

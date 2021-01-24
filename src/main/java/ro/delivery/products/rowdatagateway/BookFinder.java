@@ -1,13 +1,7 @@
-package ro.delivery.products.repository;
+package ro.delivery.products.rowdatagateway;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import ro.delivery.products.entity.Author;
 import ro.delivery.products.entity.Category;
 
@@ -16,14 +10,14 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class BookFinder {
 
-    //EntityManagerFactory emf = Persistence.createEntityManagerFactory("ro.delivery.products");
     @PersistenceContext
     private final EntityManager entityManager;
 
@@ -32,53 +26,49 @@ public class BookFinder {
         this.entityManager = entityManager;
     }
 
-   /* public EntityManager entityManager {
-        if (entityManager == null){
-            entityManager = emf.createEntityManager();
-        }
-        return entityManager;
-    }*/
+    private Map<Integer, BookGateway> booksRetrieved = new HashMap<>();//identity map
 
     public BookGateway findBookGateway(int bookId) {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery query = criteriaBuilder.createQuery();
-        Root userRoot = query.from(BookGateway.class);
-        Predicate nameRestriction =
-                criteriaBuilder.equal( userRoot.get( "id_book" ), bookId );
-        query.select(userRoot);
-        query.where( nameRestriction );
-        Query q = entityManager.createQuery(query);
-        if (q.getResultList() == null || q.getResultList().isEmpty()) {
-            return new BookGateway();
+        if (booksRetrieved.containsKey(bookId)){
+            return booksRetrieved.get(bookId);
         }else{
-            BookGateway result = (BookGateway) q.getResultList().get(0);
-           // result.setAuthorName(findAuthor(result.getIdAuthor()).getName());
-          //  result.setCategoryName(findCategory(result.getIdCat()).getName());
-            return result;
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            CriteriaQuery query = criteriaBuilder.createQuery();
+            Root userRoot = query.from(BookGateway.class);
+            Predicate nameRestriction =
+                    criteriaBuilder.equal( userRoot.get( "idBook" ), bookId );
+            query.select(userRoot);
+            query.where( nameRestriction );
+            Query q = entityManager.createQuery(query);
+            if (q.getResultList() == null || q.getResultList().isEmpty()) {
+                return new BookGateway();
+            }else{
+                BookGateway result = (BookGateway) q.getResultList().get(0);
+                booksRetrieved.put(result.getIdBook(), result);
+                return result;
+            }
         }
+
     }
 
     public List<BookGateway> findBookGateways() {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery query = criteriaBuilder.createQuery();
         Root userRoot = query.from(BookGateway.class);
-       /* Predicate nameRestriction =
-                criteriaBuilder.equal( userRoot.get( "id_book" ), bookId );*/
+
         query.select(userRoot);
-      //  query.where( nameRestriction );
         Query q = entityManager.createQuery(query);
         if (q.getResultList() == null || q.getResultList().isEmpty()) {
             return new ArrayList<>();
         }else{
-           /* List<BookGateway> list = new ArrayList<>();
+            List<BookGateway> list = new ArrayList<>();
             for(BookGateway b: (List<BookGateway>)q.getResultList() ){
-            //    b.setAuthorName(findAuthor(b.getIdAuthor()).getName());
-            //    b.setCategoryName(findCategory(b.getIdCat()).getName());
+                b.setAuthor(findAuthor(b.getAuthor().getIdAuthor()));
+                b.setCategory(findCategory(b.getCategory().getIdCat()));
                 list.add(b);
             }
 
-            return list;*/
-           return (List<BookGateway>)q.getResultList();
+            return list;
         }
     }
 
@@ -87,7 +77,7 @@ public class BookFinder {
         CriteriaQuery query = criteriaBuilder.createQuery();
         Root authorRoot = query.from(Author.class);
         Predicate nameRestriction =
-                criteriaBuilder.equal( authorRoot.get( "id_author" ), authorId );
+                criteriaBuilder.equal( authorRoot.get( "idAuthor" ), authorId );
         query.select(authorRoot);
         query.where( nameRestriction );
         Query q = entityManager.createQuery(query);
@@ -103,7 +93,7 @@ public class BookFinder {
         CriteriaQuery query = criteriaBuilder.createQuery();
         Root categoryRoot = query.from(Category.class);
         Predicate nameRestriction =
-                criteriaBuilder.equal( categoryRoot.get( "id_cat" ), categoryId );
+                criteriaBuilder.equal( categoryRoot.get( "idCat" ), categoryId );
         query.select(categoryRoot);
         query.where( nameRestriction );
         Query q = entityManager.createQuery(query);

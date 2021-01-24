@@ -1,4 +1,4 @@
-package ro.delivery.products.repository;
+package ro.delivery.products.rowdatagateway;
 
 public class AppQuery {
     public static final String INSERT_BOOK = "INSERT INTO book(\n" +

@@ -4,7 +4,10 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
+import ro.delivery.products.entity.Author;
 import ro.delivery.products.entity.Category;
+import ro.delivery.products.repository.AuthorRepository;
+import ro.delivery.products.repository.BookGateway;
 import ro.delivery.products.repository.CategoryRepository;
 /*import ro.delivery.products.repository.OrderRepository;
 import ro.delivery.products.repository.OrderedProductRepository;*/
@@ -18,6 +21,7 @@ import java.math.BigDecimal;
 public class InitData {
 
     CategoryRepository categoryRepository;
+    AuthorRepository authorRepository;
 
     @PostConstruct
     public void initData() {
@@ -28,6 +32,14 @@ public class InitData {
             categoryRepository.save(new Category().setName("Cooking").setDescription("Poison vs poisson"));
             categoryRepository.save(new Category().setName("Police").setDescription("Escape"));
         }
+        if (authorRepository.count() == 0){
+            authorRepository.save(new Author().setIdAuthor(-1).setName("Cineva").setNationality("ceva"));
+        }
+       /* BookGateway b = new BookGateway()
+                .setAuthor(new Author().setIdAuthor(-1)).setCategory(new Category().setIdCat(0))
+                .setPublisher("an").setTitle("titlu");
+        b.insertBook();
+*/
     }
 
 }

@@ -28,8 +28,6 @@ public class CategoryController {
     public List<Product> getPoductsByCategory(@PathVariable Integer idCategory) {
         return productRepository.findAllByIdCat(idCategory);
     }*/
-
-
 }
 /**
  * book [bookid, title, categoryid, authorid, publisher]
@@ -39,4 +37,47 @@ public class CategoryController {
  * reader[readerid, name, birthday, address, phone]
  * borrow[borrowid, returndate, bookid, readerid]
  * admin[adminid, username, password]
+ *
+ * ----
+ * ghost -carte[idcarte, nume, autor] preluam initial carte[idcarte] apoi pe parcurs facem get daca ne trebuie
+ * celelalte campuri
+ * [comportamentale ob relationale]
+ * - in tabelul de carti afisam fara editura, cand se editeaza cartea, preluam si editura daca nu o avem deja in sesiune
+ * ===
+ * arhitectural de baza
+ * gateway - clasa api pt comunicat cu serv extern: maps
+ * ===
+ * OK
+ * arhitectural de date
+ * row data gateway - book finder class , extinde book gateway [insert, update, delete 1, fielduri]
+ * transaction script = metodele de insert, update, delete, select, cu grija la tranzactie [start, commit,
+ * end]
+ * ==
+ * OK
+ * strat 1. prezentare : js pt tratat cereri useri si html/thymeleaf pt ui [templates]
+ * 2.domeniu: [modele]
+ * 3: surse de date: comunicare cu bd [repository]
+ * + [controller]
+ * ===
+ * OK
+ * sabloane ale prezentarii web
+ * mvc - model [2] , view [1] , controller
+ * viewul depinde de model [in js avem instante de obiecte cu care populam pagina web], modelul nu are
+ * referinte la paginile cu ui
+ * controller spring, view cu thymeleaf si html, modele date
+ * ===
+ * OK
+ * structural obiectual relationale
+ * identity field/camp identitate - bookid face legatura cu acelasi id din bd
+ * ==
+ * client session state
+ * pastram pe cookie putina informatie [e.g. last username]
+ * ==
+ * OK
+ * distribuire
+ * data transfer object  - dto class carte [idcarte, nume] , carte in baza de date cu clasa model [idcarte,
+ * idautor etc]
+ * 	-la unele apeluri in repository/mapper trimitem dto din pagina web la request
+ * 	- clasa assembler cu metoda createDto , createDomainObject
+ * ===
  */

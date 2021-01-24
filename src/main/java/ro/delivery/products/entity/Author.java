@@ -12,16 +12,17 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "categories")
+@Table(name = "authors")
 @FieldDefaults(level= AccessLevel.PRIVATE)
-public class Category {
+public class Author {
+
 
     @Id
-    @Column(name = "id_cat")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_categories_gen")
-    @SequenceGenerator(name = "seq_categories_gen", allocationSize = 1, sequenceName = "seq_categories")
-    Integer idCat;
+    @Column(name = "id_author")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_authors_gen")
+    @SequenceGenerator(name = "seq_authors_gen", allocationSize = 1, sequenceName = "seq_authors")
+    Integer idAuthor;
 
     String name;
-    String description;
+    String nationality;
 }

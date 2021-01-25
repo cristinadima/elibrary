@@ -47,6 +47,7 @@ public class BooksController {
 
     @RequestMapping(value = "/addBook", method = RequestMethod.GET)
     public String addBook(Model model) {
+        model.addAttribute("bookDto", new BookDto());
         model.addAttribute("authors", authorRepository.findAll());
         model.addAttribute("categories", categoryRepository.findAll());
         return "addBook";
@@ -68,8 +69,8 @@ public class BooksController {
     }
 
     @RequestMapping(value = "/insertBook", method = RequestMethod.POST)
-    public String insertBook(Model model, @RequestBody BookDto bookDto) {
-        model.addAttribute("books", new BookAssembler().getBooks(finder.findBookGateways()));
+    public String insertBook(Model model, @ModelAttribute("bookDto") BookDto bookDto) {
+        //model.addAttribute("books", new BookAssembler().getBooks(finder.findBookGateways()));
         bookService.insertBook(bookDto);
         return "redirect:/books";
     }

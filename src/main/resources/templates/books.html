@@ -81,7 +81,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="./notifications.html">
+                    <a class="nav-link"  th:href="@{address}">
                         <i class="nc-icon nc-bell-55"></i>
                         <p>Address info</p>
                     </a>
@@ -131,7 +131,9 @@
                                                     style = "padding-left: 0;" th:href="@{editBook/}+${book.idBook}" >
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <button type="button" rel="tooltip" title="" class="btn btn-danger btn-simple btn-link" data-original-title="Remove">
+                                            <button th:value="${book.idBook}" type="button"
+                                                    rel="tooltip" title=""
+                                                    class="button-delete btn btn-danger btn-simple btn-link" data-original-title="Remove">
                                                 <i class="fa fa-times"></i>
                                             </button>
                                         </td>
@@ -158,6 +160,7 @@
 <script src="../static/js/plugins/bootstrap-notify.js" th:src="@{/js/plugins/bootstrap-notify.js}"></script>
 <script src="../static/js/light-bootstrap-dashboard.js?v=2.0.0" th:src="@{/js/light-bootstrap-dashboard.js?v=2.0.0}"></script>
 <script src="../static/js/demo.js" th:src="@{/js/demo.js}"></script>
+<script src="../static/js/books.js" th:src="@{/js/books.js}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         // Javascript method's body can be found in assets/js/demos.js

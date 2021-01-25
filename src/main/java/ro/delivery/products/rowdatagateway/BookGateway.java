@@ -46,13 +46,6 @@ public class BookGateway {
     @JoinColumn(name = "id_author")
     Author author;
 
-    /*@Transient
-    BookService bookService;
-
-    @Autowired
-    public BookGateway(BookService bookService) {
-        this.bookService = bookService;
-    }*/
 
     private Connection getConnection(){
          String dbURL = "jdbc:postgresql://localhost:5432/library";
@@ -84,7 +77,7 @@ public class BookGateway {
             statement.setInt(5, getIdBook());
 
             int rowsUpdated = statement.executeUpdate();
-            System.out.println("inserted "+rowsUpdated);
+            System.out.println("updated "+rowsUpdated);
             connection.close();
         }catch (SQLException e){
             e.printStackTrace();
@@ -115,6 +108,7 @@ public class BookGateway {
         }
     }
 
+    @Transactional
     public void deleteBook() {
         Connection connection = getConnection();
         try{
@@ -124,7 +118,7 @@ public class BookGateway {
 
             int rowsDeleted = statement.executeUpdate();
 
-            System.out.println("inserted "+rowsDeleted);
+            System.out.println("deleted "+rowsDeleted);
             connection.close();
         }catch (SQLException e){
             e.printStackTrace();

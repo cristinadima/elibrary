@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../static/img/apple-icon.png"
+          th:href="@{/img/apple-icon.png}">
+    <link rel="icon" type="image/png" href="../static/img/favicon.ico" th:href="@{/img/favicon.ico}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Library</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <!-- CSS Files -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link href="../static/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet"
+          th:href="@{/css/light-bootstrap-dashboard.css?v=2.0.0}"/>
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../static/css/demo.css" rel="stylesheet" th:href="@{/css/light-bootstrap-dashboard.css?v=2.0.0}"/>
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="sidebar"
+         data-image="https://cdn.pixabay.com/photo/2017/08/06/22/01/books-2596809_1280.jpg">
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <div class="simple-text">
+                    Library
+                </div>
+            </div>
+            <ul class="nav nav-mobile-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="#pablo">
+                        <span class="no-icon">Log out</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav">
+                <li>
+                    <a class="nav-link" href="./books" th:href="@{/books}">
+                        <i class="nc-icon nc-circle-09"></i>
+                        <p>Books</p>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./categories" th:href="@{/categories}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Categories</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="./typography.html">
+                        <i class="nc-icon nc-paper-2"></i>
+                        <p>Authors</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" th:href="@{readers}">
+                        <i class="nc-icon nc-pin-3"></i>
+                        <p>Readers</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" th:href="@{borrows}">
+                        <i class="nc-icon nc-bell-55"></i>
+                        <p>Borrow</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Edit category</h4>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row">
+
+                                        <div class="form-group col-md-12">
+                                            <label>Name</label>
+                                            <input id="name" type="text" class="form-control" placeholder="Name">
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label>Description</label>
+                                            <input id="description" type="text" class="form-control" placeholder="Description">
+                                        </div>
+                                    </div>
+
+                                    <button class="btn btn-info btn-fill pull-right" style="
+    margin-left: auto;
+    margin-right: 15px;" onclick="editCategory()">Save</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+</body>
+<!--   Core JS Files   -->
+<script src="../static/js/core/jquery.3.2.1.min.js" th:src="@{/js/core/jquery.3.2.1.min.js}" type="text/javascript"></script>
+<script src="../static/js/core/popper.min.js" th:src="@{/js/core/popper.min.js}" type="text/javascript"></script>
+<script src="../static/js/core/bootstrap.min.js" th:src="@{/js/core/bootstrap.min.js}" type="text/javascript"></script>
+<script src="../static/js/plugins/bootstrap-switch.js" th:src="@{/js/plugins/bootstrap-switch.js}"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!--  Chartist Plugin  -->
+<script src="../static/js/plugins/chartist.min.js" th:src="@{/js/plugins/chartist.min.js}"></script>
+<!--  Notifications Plugin    -->
+<script src="../static/js/plugins/bootstrap-notify.js" th:src="@{/js/plugins/bootstrap-notify.js}"></script>
+<!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
+<script src="../static/js/light-bootstrap-dashboard.js?v=2.0.0 " th:src="@{/js/light-bootstrap-dashboard.js?v=2.0.0}" type="text/javascript"></script>
+<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
+<script src="../static/js/demo.js" th:src="@{/js/demo.js}" type="text/javascript"></script>
+<script src="../static/js/books.js" th:src="@{/js/books.js}" type="text/javascript"></script>
+<script src="../static/js/categories.js" th:src="@{/js/categories.js}" type="text/javascript"></script>
+</html>

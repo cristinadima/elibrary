@@ -70,7 +70,6 @@ public class BooksController {
 
     @RequestMapping(value = "/insertBook", method = RequestMethod.POST)
     public String insertBook(Model model, @ModelAttribute("bookDto") BookDto bookDto) {
-        //model.addAttribute("books", new BookAssembler().getBooks(finder.findBookGateways()));
         bookService.insertBook(bookDto);
         return "redirect:/books";
     }

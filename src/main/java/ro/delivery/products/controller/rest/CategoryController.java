@@ -3,9 +3,12 @@ package ro.delivery.products.controller.rest;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import ro.delivery.products.entity.Category;
 import ro.delivery.products.repository.CategoryRepository;
 
@@ -29,6 +32,7 @@ public class CategoryController {
         return productRepository.findAllByIdCat(idCategory);
     }*/
 }
+
 /**
  * book [bookid, title, categoryid, authorid, publisher]
  * category [categoryid, name, description]

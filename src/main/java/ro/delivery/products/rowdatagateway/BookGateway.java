@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import ro.delivery.products.entity.Author;
 import ro.delivery.products.entity.Category;
 
@@ -124,15 +121,4 @@ public class BookGateway {
             e.printStackTrace();
         }
     }
-
-
-  /*  @Transactional
-    public void deleteBook() {
-        bookService.deleteBook(this);
-    }
-
-    @Transactional
-    public void updateBook() {
-        bookService.updateBook(this);
-    }*/
 }

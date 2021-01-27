@@ -1,6 +1,5 @@
 package ro.delivery.products.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.delivery.products.dto.BookAssembler;
 import ro.delivery.products.dto.BookDto;

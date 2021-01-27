@@ -32,13 +32,6 @@
                         Library
                     </div>
                 </div>
-                <ul class="nav nav-mobile-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#pablo">
-                            <span class="no-icon">Log out</span>
-                        </a>
-                    </li>
-                </ul>
                 <ul class="nav">
                     <li>
                         <a class="nav-link" th:href="@{/books}">
@@ -53,7 +46,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" th:href="@{authors}">
+                        <a class="nav-link" th:href="@{/authors}">
                             <i class="nc-icon nc-paper-2"></i>
                             <p>Authors</p>
                         </a>
@@ -80,19 +73,19 @@
                         <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Edit reader</h4>
+                                    <h4 class="card-title">Edit author</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form th:object="${reader}" th:action="@{/updateReader}" method="post"
+                                    <form th:object="${author}" th:action="@{/updateAuthor}" method="post"
                                     role="form" enctype="multipart/form-data">
                                         <div class="row">
 
                                                 <div class="form-group col-md-12">
-                                                    <label>Reader ID</label>
-                                                    <input  th:field="*{idReader}" type="text" class="form-control"
-                                                            placeholder="Reader ID"
+                                                    <label>Author ID</label>
+                                                    <input  th:field="*{idAuthor}" type="text" class="form-control"
+                                                            placeholder="Author ID"
                                                            readonly
-                                                           th:value="${reader.idReader}">
+                                                           th:value="${author.idAuthor}">
                                                 </div>
 
                                         </div>
@@ -101,7 +94,7 @@
                                             <div class="form-group col-md-12">
                                                 <label>Name</label>
                                                 <input  type="text" class="form-control"
-                                                       th:value="${reader.name}"
+                                                       th:value="${author.name}"
                                                        th:field="*{name}"
                                                        placeholder="Name">
 
@@ -109,31 +102,14 @@
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-md-12">
-                                                <label>Birthday</label>
+                                                <label>Nationality</label>
 
                                                 <input
-                                                       th:field="*{birthday}"
-                                                       th:value="${reader.birthday}" type="date" class="form-control" placeholder="Birthday">
+                                                       th:field="*{nationality}"
+                                                       th:value="${author.nationality}" type="text" class="form-control" placeholder="Nationality">
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="form-group col-md-12">
-                                                <label>Address</label>
 
-                                                <input
-                                                        th:field="*{address}"
-                                                        th:value="${reader.address}" type="text" class="form-control" placeholder="Address">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group col-md-12">
-                                                <label>Phone</label>
-
-                                                <input
-                                                        th:field="*{phone}"
-                                                        th:value="${reader.phone}" type="number" class="form-control" placeholder="Phone">
-                                            </div>
-                                        </div>
                                         <button class="btn btn-info btn-fill pull-right" style="
     margin-left: auto;
     margin-right: 15px;"

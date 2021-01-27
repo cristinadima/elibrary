@@ -1,4 +1,4 @@
-package ro.delivery.products.controller.ui;
+package ro.delivery.products.controller;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -9,12 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ro.delivery.products.dto.BookAssembler;
 import ro.delivery.products.dto.BookDto;
-import ro.delivery.products.entity.Author;
-import ro.delivery.products.entity.Category;
 import ro.delivery.products.repository.AuthorRepository;
 import ro.delivery.products.repository.CategoryRepository;
 import ro.delivery.products.rowdatagateway.BookFinder;
-import ro.delivery.products.rowdatagateway.BookGateway;
 import ro.delivery.products.service.IBookService;
 
 @Controller
@@ -86,12 +83,4 @@ public class BooksController {
 
     }
 }
-/*
- * book [bookid, title, categoryid, authorid, publisher]
- * category [categoryid, name, description]
- * author[authorid, name, nationality]
- * publisher[publisherid, name]
- * reader[readerid, name, birthday, address, phone]
- * borrow[borrowid, returndate, bookid, readerid]
- * admin[adminid, username, password]
- */
+

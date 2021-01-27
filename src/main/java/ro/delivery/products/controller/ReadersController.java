@@ -1,4 +1,4 @@
-package ro.delivery.products.controller.ui;
+package ro.delivery.products.controller;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -8,9 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ro.delivery.products.entity.Category;
 import ro.delivery.products.entity.Reader;
-import ro.delivery.products.repository.CategoryRepository;
 import ro.delivery.products.repository.ReaderRepository;
 
 @Controller
@@ -63,12 +61,4 @@ public class ReadersController {
         }
     }
 }
-/*
- * book [bookid, title, categoryid, authorid, publisher]
- * category [categoryid, name, description]
- * author[authorid, name, nationality]
- * publisher[publisherid, name]
- * reader[readerid, name, birthday, address, phone]
- * borrow[borrowid, returndate, bookid, readerid]
- * admin[adminid, username, password]
- */
+

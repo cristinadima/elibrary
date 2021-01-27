@@ -18,16 +18,6 @@ public class BookAssembler {
         return  bookDto;
     }
 
-   /* public Book getBook(BookDto dto){
-        Book book  = new Book();
-        book.setAuthor(new Author().setIdAuthor(dto.getIdAuthor()).setName(dto.getAuthorName()));
-        book.setCategory(new Category().setIdCat(dto.getIdCategory()).setName(dto.getCategoryName()));
-        book.setIdBook(dto.getIdBook());
-        book.setPublisher(dto.getPublisher());
-        book.setTitle(dto.getTitle());
-        return book;
-    }*/
-
     public List<BookDto> getBooks(List<BookGateway> books){
         List<BookDto> list = new ArrayList<>();
         for(BookGateway book : books){

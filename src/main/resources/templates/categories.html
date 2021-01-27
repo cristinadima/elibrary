@@ -45,51 +45,36 @@
                     Library
                 </div>
             </div>
-            <ul class="nav nav-mobile-menu">
-<!--                <li class="nav-item">-->
-<!--                    <a href="#" class="nav-link" data-toggle="dropdown">-->
-
-<!--                        <span class="d-lg-none">Dashboard</span>-->
-<!--                    </a>-->
-<!--                </li>-->
-
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#pablo">
-                        <span class="no-icon">Log out</span>
-                    </a>
-                </li>
-            </ul>
             <ul class="nav">
 
                 <li>
-                    <a class="nav-link" href="./books" th:href="@{books}">
-                        <i class="nc-icon nc-circle-09"></i>
+                    <a class="nav-link" th:href="@{books}">
+                        <i class="nc-icon nc-single-copy-04"></i>
                         <p>Books</p>
                     </a>
                 </li>
-                <li class="nav-item active">
+                <li  class="nav-item active">
                     <a class="nav-link" href="#">
-                        <i class="nc-icon nc-notes"></i>
+                        <i class="nc-icon nc-bullet-list-67"></i>
                         <p>Categories</p>
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="./typography.html">
+                    <a class="nav-link" th:href="@{authors}">
                         <i class="nc-icon nc-paper-2"></i>
                         <p>Authors</p>
                     </a>
                 </li>
                 <li>
                     <a class="nav-link" th:href="@{readers}">
-                        <i class="nc-icon nc-pin-3"></i>
+                        <i class="nc-icon nc-single-02"></i>
                         <p>Readers</p>
                     </a>
                 </li>
                 <li>
                     <a class="nav-link" th:href="@{borrows}">
-                        <i class="nc-icon nc-bell-55"></i>
-                        <p>Borrow</p>
+                        <i class="nc-icon nc-badge"></i>
+                        <p>Borrows</p>
                     </a>
                 </li>
                 <li>
@@ -105,16 +90,16 @@
                     <div class="card  card-tasks">
                         <div class="card-header" style="vertical-align: center;">
                             <div style="display: flex; align-items: center;">
-                                <h4 class="card-title">Categories</h4>
+                                <h4 class="card-title">Category</h4>
                                 <div class="button-container" style="margin-left: auto;">
-                                    <a href="./addCategory" th:href="@{addCategory}"
+                                    <a th:href="@{addCategory}"
                                        class="btn btn-warning btn-block btn-fill">Add category</a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body ">
                             <div class="table-full-width">
-                                <table class="table">
+                                <table  class="table">
                                     <thead>
                                     <tr>
                                         <th>Category ID</th>
@@ -123,10 +108,10 @@
                                         <th>Action</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-<!--                                    <tr th:if="${categories.empty}">-->
-<!--                                        <td colspan="2"> No Categories Available </td>-->
-<!--                                    </tr>-->
+                                    <tbody id="categories-table">
+                                    <tr id="empty-categories" th:classappend="${categories.empty} ? '' : 'display-none'">
+                                        <td colspan="2"> No categories added </td>
+                                    </tr>
                                     <tr th:each="category : ${categories}">
                                         <td><span th:text="${category.idCat}"> </span></td>
                                         <td><span th:text="${category.name}">  </span></td>
@@ -136,7 +121,7 @@
                                                style = "padding-left: 0;" th:href="@{editCategory/}+${category.idCat}" >
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <button  type="button"
+                                            <button  type="button" th:value="${category.idCat}"
                                                     rel="tooltip" title=""
                                                     class="button-delete btn btn-danger btn-simple btn-link" data-original-title="Remove">
                                                 <i class="fa fa-times"></i>
@@ -181,6 +166,7 @@
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <!--<script src="../static/js/demo.js"></script>-->
 <script src="../static/js/demo.js" th:src="@{/js/demo.js}"></script>
+<script th:src="@{/js/categories.js}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         // Javascript method's body can be found in assets/js/demos.js

@@ -1,7 +1,6 @@
-package ro.delivery.products.controller.ui;
+package ro.delivery.products.controller;
 
 import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,11 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ro.delivery.products.entity.Borrow;
-import ro.delivery.products.entity.Reader;
 import ro.delivery.products.repository.BorrowRepository;
 import ro.delivery.products.repository.ReaderRepository;
 import ro.delivery.products.rowdatagateway.BookFinder;
-import ro.delivery.products.service.BookService;
 
 @Controller
 @RequestMapping(path = "/")
@@ -78,12 +75,4 @@ public class BorrowsController {
         }
     }
 }
-/*
- * book [bookid, title, categoryid, authorid, publisher]
- * category [categoryid, name, description]
- * author[authorid, name, nationality]
- * publisher[publisherid, name]
- * reader[readerid, name, birthday, address, phone]
- * borrow[borrowid, returndate, bookid, readerid]
- * admin[adminid, username, password]
- */
+
